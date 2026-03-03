@@ -1,0 +1,6 @@
+@RestWithAspNet10Erudio_HostAddress = http://localhost:5159
+
+GET {{RestWithAspNet10Erudio_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
