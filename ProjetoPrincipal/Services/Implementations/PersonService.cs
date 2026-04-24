@@ -5,9 +5,9 @@ namespace ProjetoPrincipal.Services.Implementations
 {
     public class PersonService:IPersonService
     {
-        private readonly IPersonRepository _repository;
+        private readonly IRepositoryBase<Person> _repository;
 
-        public PersonService(IPersonRepository repository) { 
+        public PersonService(IRepositoryBase<Person> repository) { 
             _repository=repository;
         }
 

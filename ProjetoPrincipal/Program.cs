@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.AddSerilogLogging();
+builder.AddSerilogLogging(); //Necessário estar aqui, mais ao topo, senão pode dar problema.
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -16,7 +16,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddScoped<IPersonService, PersonService>();
-builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped(typeof(IRepositoryBase<>),typeof(RepositoryBase<>));
 
 var app = builder.Build();
 
