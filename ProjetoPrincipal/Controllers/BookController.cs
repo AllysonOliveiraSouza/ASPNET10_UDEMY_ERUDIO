@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjetoPrincipal.Data.DTO;
 using ProjetoPrincipal.Models;
 using ProjetoPrincipal.Services;
 
@@ -34,7 +35,7 @@ namespace ProjetoPrincipal.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Book book)
+        public IActionResult Post([FromBody] BookDTO book)
         {
             _logger.LogInformation("Creating new Book: {title}", book.Title);
 
@@ -48,7 +49,7 @@ namespace ProjetoPrincipal.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] Book book)
+        public IActionResult Put([FromBody] BookDTO book)
         {
             _logger.LogInformation("Updating book with ID {id}", book.Id);
 

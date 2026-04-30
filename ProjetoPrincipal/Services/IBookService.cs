@@ -1,16 +1,17 @@
-﻿using ProjetoPrincipal.Models;
+﻿using ProjetoPrincipal.Data.DTO;
+using ProjetoPrincipal.Models;
 
 namespace ProjetoPrincipal.Services
 {
     public interface IBookService
     {
-        Book Create(Book person);
+        BookDTO Create(BookDTO book);
 
-        Book FindById(long id);
+        BookDTO FindById(long id);
 
-        List<Book> FindAll();
+        List<BookDTO> FindAll();
 
-        Book Update(Book person);
+        BookDTO Update(BookDTO book);
 
         void Delete(long id);
     }

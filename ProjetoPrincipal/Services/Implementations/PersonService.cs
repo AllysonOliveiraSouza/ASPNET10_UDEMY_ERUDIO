@@ -1,4 +1,6 @@
-﻿using ProjetoPrincipal.Models;
+﻿using ProjetoPrincipal.Data.Converter.Implementation;
+using ProjetoPrincipal.Data.DTO;
+using ProjetoPrincipal.Models;
 using ProjetoPrincipal.Repositories;
 
 namespace ProjetoPrincipal.Services.Implementations
@@ -6,14 +8,17 @@ namespace ProjetoPrincipal.Services.Implementations
     public class PersonService:IPersonService
     {
         private readonly IRepositoryBase<Person> _repository;
+        private readonly PersonParser _personParser;
 
         public PersonService(IRepositoryBase<Person> repository) { 
             _repository=repository;
+            _personParser = new();
         }
 
-        public Person Create(Person person)
+        public PersonDTO Create(PersonDTO person)
         {
-            return _repository.Create(person);            
+            var p = _personParser.Parse(person);
+            return _personParser.Parse(_repository.Create(p));            
         }
 
         public void Delete(long id)
@@ -21,19 +26,20 @@ namespace ProjetoPrincipal.Services.Implementations
             _repository.Delete(id);
         }
 
-        public List<Person> FindAll()
+        public List<PersonDTO> FindAll()
         {
-            return _repository.FindAll();
+            return _personParser.ParseList(_repository.FindAll());
         }
 
-        public Person FindById(long id)
+        public PersonDTO FindById(long id)
         {
-            return _repository.FindById(id);
+            return _personParser.Parse(_repository.FindById(id));
         }
 
-        public Person Update(Person person)
+        public PersonDTO Update(PersonDTO person)
         {
-            return _repository.Update(person);
+            var p = _personParser.Parse(person);
+            return _personParser.Parse(_repository.Update(p));
         }
     }
 }

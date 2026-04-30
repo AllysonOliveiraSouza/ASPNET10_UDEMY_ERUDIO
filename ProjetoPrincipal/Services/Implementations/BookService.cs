@@ -1,4 +1,6 @@
-﻿using ProjetoPrincipal.Models;
+﻿using Mapster;
+using ProjetoPrincipal.Data.DTO;
+using ProjetoPrincipal.Models;
 using ProjetoPrincipal.Repositories;
 
 namespace ProjetoPrincipal.Services.Implementations
@@ -10,9 +12,11 @@ namespace ProjetoPrincipal.Services.Implementations
         public BookService(IRepositoryBase<Book> repository) { 
             _repository = repository;
         }
-        public Book Create(Book person)
+        public BookDTO Create(BookDTO book)
         {
-            return _repository.Create(person);
+            var entity = book.Adapt<Book>();
+            _repository.Create(entity);
+            return entity.Adapt<BookDTO>();
         }
 
         public void Delete(long id)
@@ -20,19 +24,22 @@ namespace ProjetoPrincipal.Services.Implementations
             _repository.Delete(id);
         }
 
-        public List<Book> FindAll()
+        public List<BookDTO> FindAll()
         {
-           return _repository.FindAll();
+           return _repository.FindAll().Adapt<List<BookDTO>>();
         }
 
-        public Book FindById(long id)
+        public BookDTO FindById(long id)
         {
-            return _repository.FindById(id);
+            return _repository.FindById(id).Adapt<BookDTO>();
         }
 
-        public Book Update(Book person)
+        public BookDTO Update(BookDTO book)
         {
-            return _repository.Update(person);
+            var entity = book.Adapt<Book>();
+            _repository.Update(entity);
+
+            return entity.Adapt<BookDTO>();
         }
     }
 }

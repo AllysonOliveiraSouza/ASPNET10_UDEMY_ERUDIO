@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjetoPrincipal.Data.Converter.Implementation;
+using ProjetoPrincipal.Data.DTO;
 using ProjetoPrincipal.Models;
 using ProjetoPrincipal.Services;
 
@@ -10,7 +12,7 @@ namespace ProjetoPrincipal.Controllers
     public class PersonController : ControllerBase
     {
         private IPersonService _personService;
-        private readonly ILogger<PersonController> _logger;
+        private readonly ILogger<PersonController> _logger;     
 
         public PersonController(IPersonService personService,
             ILogger<PersonController> logger)
@@ -40,7 +42,7 @@ namespace ProjetoPrincipal.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Person person)
+        public IActionResult Post([FromBody] PersonDTO person)
         {
             _logger.LogInformation("Creating new Person: {firstName}", person.FirstName);
 
@@ -54,7 +56,7 @@ namespace ProjetoPrincipal.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] Person person)
+        public IActionResult Put([FromBody] PersonDTO person)
         {
             _logger.LogInformation("Updating person with ID {id}", person.Id);
 

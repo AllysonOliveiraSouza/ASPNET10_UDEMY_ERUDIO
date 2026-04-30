@@ -1,16 +1,17 @@
-﻿using ProjetoPrincipal.Models;
+﻿using ProjetoPrincipal.Data.DTO;
+using ProjetoPrincipal.Models;
 
 namespace ProjetoPrincipal.Services
 {
     public interface IPersonService
     {   
-        Person Create(Person person);
+        PersonDTO Create(PersonDTO person);
 
-        Person FindById(long id);
+        PersonDTO FindById(long id);
 
-        List<Person> FindAll();
+        List<PersonDTO> FindAll();
 
-        Person Update(Person person);
+        PersonDTO Update(PersonDTO person);
 
         void Delete(long id);
     }
