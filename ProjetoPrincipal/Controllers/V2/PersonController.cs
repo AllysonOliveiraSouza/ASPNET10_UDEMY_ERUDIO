@@ -2,20 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjetoPrincipal.Data.Converter.Implementation;
 using ProjetoPrincipal.Data.DTO;
-using ProjetoPrincipal.Data.DTO.V1;
+using ProjetoPrincipal.Data.DTO.V2;
 using ProjetoPrincipal.Models;
 using ProjetoPrincipal.Services;
+using ProjetoPrincipal.Services.Implementations;
 
-namespace ProjetoPrincipal.Controllers
+namespace ProjetoPrincipal.Controllers.V2
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v2/[controller]")]
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private IPersonService _personService;
+        private PersonServiceV2 _personService;
         private readonly ILogger<PersonController> _logger;     
 
-        public PersonController(IPersonService personService,
+        public PersonController(PersonServiceV2 personService,
             ILogger<PersonController> logger)
         {
             _personService = personService;
@@ -53,9 +54,6 @@ namespace ProjetoPrincipal.Controllers
                 _logger.LogError("Failed to create person with name {firstName}", person.FirstName);
                 return NotFound();
             }
-
-            Response.Headers.Append("X-API-Deprecated", "true");
-            Response.Headers.Append("X-API-Deprecation-Date", "2026-12-31");
 
             return Ok(createdPerson);
         }

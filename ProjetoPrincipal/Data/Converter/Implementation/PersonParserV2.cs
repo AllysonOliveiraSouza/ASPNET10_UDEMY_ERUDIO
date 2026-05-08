@@ -1,10 +1,10 @@
 ﻿using ProjetoPrincipal.Data.Converter.Contract;
-using ProjetoPrincipal.Data.DTO.V1;
+using ProjetoPrincipal.Data.DTO.V2;
 using ProjetoPrincipal.Models;
 
 namespace ProjetoPrincipal.Data.Converter.Implementation
 {
-    public class PersonParser : IParser<PersonDTO, Person>, IParser<Person,PersonDTO>
+    public class PersonParserV2 : IParser<PersonDTO, Person>, IParser<Person,PersonDTO>
     {
         public Person Parse(PersonDTO origin)
         {
@@ -42,7 +42,9 @@ namespace ProjetoPrincipal.Data.Converter.Implementation
                 FirstName = origin.FirstName,
                 LastName = origin.LastName,
                 Address = origin.Address,
-                Gender = origin.Gender
+                Gender = origin.Gender,
+                Birthday = DateTime.Now
+                // Birtday = origin.Birthday
             };
         }
     }

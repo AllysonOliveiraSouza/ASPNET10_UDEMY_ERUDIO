@@ -1,4 +1,4 @@
-﻿namespace ProjetoPrincipal.Data.DTO
+﻿namespace ProjetoPrincipal.Data.DTO.V1
 {
     public class PersonDTO
     {

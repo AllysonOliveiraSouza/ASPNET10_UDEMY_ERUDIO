@@ -1,16 +1,17 @@
 ﻿using ProjetoPrincipal.Data.Converter.Implementation;
-using ProjetoPrincipal.Data.DTO.V1;
+using ProjetoPrincipal.Data.DTO.V2;
 using ProjetoPrincipal.Models;
 using ProjetoPrincipal.Repositories;
 
 namespace ProjetoPrincipal.Services.Implementations
 {
-    public class PersonService:IPersonService
+    public class PersonServiceV2
     {
         private readonly IRepositoryBase<Person> _repository;
-        private readonly PersonParser _personParser;
+        private readonly PersonParserV2 _personParser;
 
-        public PersonService(IRepositoryBase<Person> repository) { 
+        public PersonServiceV2(IRepositoryBase<Person> repository)
+        {
             _repository=repository;
             _personParser = new();
         }
@@ -18,7 +19,7 @@ namespace ProjetoPrincipal.Services.Implementations
         public PersonDTO Create(PersonDTO person)
         {
             var p = _personParser.Parse(person);
-            return _personParser.Parse(_repository.Create(p));            
+            return _personParser.Parse(_repository.Create(p));
         }
 
         public void Delete(long id)

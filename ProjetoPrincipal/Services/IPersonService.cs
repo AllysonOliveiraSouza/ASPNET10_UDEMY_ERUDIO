@@ -1,4 +1,4 @@
-﻿using ProjetoPrincipal.Data.DTO;
+﻿using ProjetoPrincipal.Data.DTO.V1;
 using ProjetoPrincipal.Models;
 
 namespace ProjetoPrincipal.Services

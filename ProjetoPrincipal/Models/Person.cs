@@ -31,6 +31,10 @@ namespace ProjetoPrincipal.Models
         [Column("gender", TypeName = "varchar(6)")]
         [MaxLength(6)]
         public string Gender { get; set; }
+
+        // Apenas para didática do curso        
+        //[NotMapped] <- Significa que o ef não considere essa coluna no sql
+        //public DateTime? Birthday { get; set; }
     }
     }
 

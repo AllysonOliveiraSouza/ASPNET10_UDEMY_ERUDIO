@@ -18,6 +18,7 @@ builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped(typeof(IRepositoryBase<>),typeof(RepositoryBase<>));
+builder.Services.AddScoped<PersonServiceV2>();
 
 var app = builder.Build();
 

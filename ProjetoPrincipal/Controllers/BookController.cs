@@ -6,7 +6,7 @@ using ProjetoPrincipal.Services;
 
 namespace ProjetoPrincipal.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v1")]
     [ApiController]
     public class BookController : ControllerBase
     {
